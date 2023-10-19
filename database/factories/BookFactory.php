@@ -24,7 +24,7 @@ class BookFactory extends Factory
             'number_available' => $this->faker->numberBetween(0, 100),
             'publication_year' => $this->faker->numberBetween(1800, 2023),
             'category_id' => function () {
-                return Category::inRandomOrder()->first()->id;
+                return Category::inRandomOrder()->first()?->id;
             },
         ];
     }
