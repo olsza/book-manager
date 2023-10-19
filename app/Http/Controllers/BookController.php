@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use App\Models\Book;
+use Illuminate\Http\Response;
 
 class BookController extends Controller
 {
@@ -13,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return response(Book::all(), Response::HTTP_OK);
     }
 
     /**
@@ -21,7 +22,9 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        $data = Book::create($request->all());
+
+        return response($data, Response::HTTP_CREATED);
     }
 
     /**
@@ -29,7 +32,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return response($book, Response::HTTP_OK);
     }
 
     /**
@@ -37,7 +40,9 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        $book->update($request->all());
+
+        return response($book, Response::HTTP_OK);
     }
 
     /**
@@ -45,6 +50,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
