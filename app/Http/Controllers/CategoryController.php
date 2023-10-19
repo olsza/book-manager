@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use Illuminate\Http\Response;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return response(Category::all(), Response::HTTP_OK);
     }
 
     /**
@@ -21,7 +22,9 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $data = Category::create($request->all());
+
+        return response($data, Response::HTTP_CREATED);
     }
 
     /**
@@ -29,7 +32,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+//        $data = $category->find($id);
+
+        return response($category, Response::HTTP_OK);
     }
 
     /**
@@ -37,7 +42,9 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $category->update($request->all());
+
+        return response($category, Response::HTTP_OK);
     }
 
     /**
@@ -45,6 +52,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
