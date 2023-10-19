@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "olsza/book-manager",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Book Manager - Recruiting Task",
+    "keywords": ["book", "manager", "olsza"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
