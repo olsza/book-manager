@@ -12,4 +12,17 @@ class Category extends Model
     protected $fillable = [
         'name',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($data) {
+            $existingCategory = Category::where('name', $data->name)->first();
+
+            if ($existingCategory) {
+                return false;
+            }
+        });
+    }
 }
