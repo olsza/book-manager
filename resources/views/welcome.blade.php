@@ -26,60 +26,7 @@
         </div>
 
         <div class="mt-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                <x-box
-                    title="Documentation"
-                    link="https://laravel.com/docs"
-                >
-                    Laravel has wonderful documentation covering every aspect of the framework. Whether you are
-                    a newcomer or have prior experience with Laravel, we recommend reading our documentation
-                    from beginning to end.
-                </x-box>
-
-                <x-box
-                    title="Laracasts"
-                    link="https://laracasts.com"
-                >
-                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development.
-                    Check them out, see for yourself, and massively level up your development skills in the
-                    process.
-                </x-box>
-
-                <x-box
-                    title="Laravel News"
-                    link="https://laravel-news.com"
-                >
-                    Laravel News is a community driven portal and newsletter aggregating all of the latest and
-                    most important news in the Laravel ecosystem, including new package releases and tutorials.
-                </x-box>
-
-                <x-box title="Laravel News">
-                    Laravel's robust library of first-party tools and libraries, such as <a
-                        href="https://forge.laravel.com"
-                        class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Forge</a>,
-                    <a href="https://vapor.laravel.com"
-                       class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Vapor</a>,
-                    <a href="https://nova.laravel.com"
-                       class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Nova</a>,
-                    and <a href="https://envoyer.io"
-                           class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Envoyer</a>
-                    help you take your projects to the next level. Pair them with powerful open source libraries
-                    like <a href="https://laravel.com/docs/billing"
-                            class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Cashier</a>,
-                    <a href="https://laravel.com/docs/dusk"
-                       class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dusk</a>,
-                    <a href="https://laravel.com/docs/broadcasting"
-                       class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Echo</a>,
-                    <a href="https://laravel.com/docs/horizon"
-                       class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Horizon</a>,
-                    <a href="https://laravel.com/docs/sanctum"
-                       class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Sanctum</a>,
-                    <a href="https://laravel.com/docs/telescope"
-                       class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Telescope</a>,
-                    and more.
-                </x-box>
-
-            </div>
+            <livewire:list-books />
         </div>
 
         <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
