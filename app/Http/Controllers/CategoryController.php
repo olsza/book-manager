@@ -32,8 +32,6 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-//        $data = $category->find($id);
-
         return response($category, Response::HTTP_OK);
     }
 
