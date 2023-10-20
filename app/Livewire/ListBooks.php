@@ -10,11 +10,6 @@ class ListBooks extends Component
 {
     use WithPagination;
 
-    public function mount()
-    {
-//        $this->books = Book::paginate(10);
-    }
-
     public function render()
     {
         $books = Book::paginate(10);
