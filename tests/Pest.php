@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 /*
@@ -15,12 +14,7 @@ use Tests\TestCase;
 |
 */
 
-uses(TestCase::class)
-    ->beforeEach(fn () => Http::preventStrayRequests())
-    ->in('Feature', 'Unit');
-
-uses(RefreshDatabase::class)
-    ->in('Feature', 'Unit');
+uses(TestCase::class, RefreshDatabase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +27,9 @@ uses(RefreshDatabase::class)
 |
 */
 
+expect()->extend('toBeOne', function () {
+    return $this->toBe(1);
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +41,8 @@ uses(RefreshDatabase::class)
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
+
+function something()
+{
+    // ..
+}
