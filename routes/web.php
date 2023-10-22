@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('home');
 Route::get('/book/{book}', ShowBook::class)->name('book');
 
 Route::middleware(['auth', 'verified'])->group(function () {
