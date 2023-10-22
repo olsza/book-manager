@@ -27,7 +27,7 @@ class NewBook extends Component
 
     public function render()
     {
-        return view('livewire.new-book')->layout('layouts.guest');
+        return view('livewire.new-book')->layout('components.layouts.app');
     }
 
     public function addBook() :void

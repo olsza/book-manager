@@ -34,6 +34,6 @@ class ShowBook extends Component
 
     public function render()
     {
-        return view('livewire.book-show')->layout('layouts.guest');
+        return view('livewire.book-show')->layout('components.layouts.app');
     }
 }

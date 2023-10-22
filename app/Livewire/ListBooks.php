@@ -14,6 +14,6 @@ class ListBooks extends Component
     {
         $books = Book::paginate(10);
 
-        return view('livewire.list-books', compact('books'));
+        return view('livewire.list-books', compact('books'))->layout('components.layouts.app');
     }
 }

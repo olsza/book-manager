@@ -39,7 +39,7 @@ class EditBook extends Component
 
     public function render()
     {
-        return view('livewire.edit-book')->layout('layouts.guest');
+        return view('livewire.edit-book')->layout('components.layouts.app');
     }
 
     public function updateBook() :void
