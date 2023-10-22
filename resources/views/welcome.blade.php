@@ -24,7 +24,11 @@
         <div class="flex justify-center">
             <x-svg.book w="full" h="20" />
         </div>
-
+        @auth()
+            <div class="flex justify-center mt-16">
+                <x-link-button href="{{ route('book.new') }}">{{ __('Add new book') }}</x-link-button>
+            </div>
+        @endauth
         <div class="mt-16">
             <livewire:list-books />
         </div>
