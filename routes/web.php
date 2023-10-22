@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\NewBook;
 use App\Livewire\ShowBook;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 Route::get('/book/{book}', ShowBook::class)->name('book');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/book', NewBook::class)->name('book.new');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
