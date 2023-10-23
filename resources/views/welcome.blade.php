@@ -22,7 +22,7 @@
 
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
         <div class="flex justify-center">
-            <x-svg.book w="full" h="20" />
+            <x-svg.book w="16" h="16" />
         </div>
         @auth()
             <div class="flex justify-center mt-16">

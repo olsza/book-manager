@@ -1,66 +1,148 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplikacja BOOK mANAGER
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Prosty system do zarządzania książkami w bibliotece.
 
-## About Laravel
+**Cel:** Rekrutacja
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Specyfikacja:
+1. **Aplikacja:**
+    - Użyj Laravela jako frameworka oraz MySQL jako bazy danych.
+2. **Interfejs użytkownika:**
+    - Prosty interfejs, który pozwoli użytkownikowi na dodawanie, edycję, usuwanie oraz przeglądanie książek.
+3. **Model książki:**
+	Książka powinna zawierać następujące informacje:
+	- Tytuł
+	- Autor
+	- Rok wydania
+	- Krótki opis
+	- Ilość dostępnych egzemplarzy
+4. **Walidacja:**
+	- Upewnij się, że wszystkie pola są odpowiednio walidowane przed zapisaniem do bazy danych.
+5. **Wyszukiwanie:**
+	- Użytkownik powinien być w stanie wyszukać książkę po tytule lub autorze.
+6. **Paginacja:**
+    - Jeśli w bazie jest więcej niż 10 książek, użyj paginacji do wyświetlania wyników.
+7. **Relacje:**
+    - Dodaj funkcjonalność, która pozwoli na przypisanie książki do kategorii (np. literatura, historia, nauka). Użytkownik powinien być w stanie przeglądać książki według kategorii.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instrukcje:
+#### Pierwsze uruchomienie:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Zrób klon na swój lokalny komputer
+```shell
+git clone https://github.com/olsza/book-manager.git
+```
 
-## Learning Laravel
+2. Wejdź do utworzonego katalogu z projektem
+```shell
+cd book-manager
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3. Skopiuj plik z ustawieniami pod SAIL (Sail to Obrazy Docker dostosowany pod Laravel) - zalecam używania, ma się pewność,że wszystkie wymagania będą spełnione.
+```shell
+cp .env.sail .env
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+4. Instalujemy SAIL przez Component z parametrem aby omijał sprawdzanie wymagań, gdyż na komputerze lokalnym, mogą się różnić wersje bibliotek PHP i będą pojawiać się błędy... później to z aktualizujemy poprzez SAIL
+```shell
+composer require laravel/sail --dev --ignore-platform-reqs
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+5. Generujemu unikalny kluch dla Laravel
+```shell
+php artisan k:g
+```
 
-## Laravel Sponsors
+6. Uruchamiamy w tle SAIL
+```shell
+./vendor/bin/sail up -d
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+7. Tworzymy Bazę
+```shell
+./vendor/bin/sail artisan migrate --step
+```
 
-### Premium Partners
+8. Wgrywamy do Bazy przykładowe Dane
+```shell
+./vendor/bin/sail artisan db:seed DatabaseSeeder
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+9. Instalujemy biblioteki NPM dla Frontu
+```shell
+./vendor/bin/sail npm install
+```
 
-## Contributing
+10. Uruchamiamy VITE, aby stworzył pliki pod front
+```shell
+./vendor/bin/sail npm run build
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Po zakończeniu, wyłączamy SAIL przez komendę
+```shell
+./vendor/bin/sail down
+```
 
-## Code of Conduct
+#### Uruchamiane na następnych uruchomieniach:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```shell
+./vendor/bin/sail up -d
+./vendor/bin/sail npm install
+./vendor/bin/sail npm run dev
+```
 
-## Security Vulnerabilities
+Po zakończeniu, wyłączamy VITE naciskając Ctrl+C oraz wyłączamy SAIL przez komendę
+```shell
+./vendor/bin/sail down
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Przeglądarka:
 
-## License
+Po uruchomieniu SAIL, możemy zobaczyć efekt w przeglądarce wchodzą na http://localhost
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Możemy przeglądać przykładowe książki wygenerowane przez Seeder-y (bez logowania)
+
+Po rejestracji i zalogowaniu, będzie można edytować i dodawać
+
+Jest gotowy jeden użytkownik, podają dane:
+
+e-mail: **test@test.test**
+
+hasło: **PASSword!23**
+
+### API
+
+Dostępne jest REST API, które np. za pomocą PostMan czy Insomnia, a także Curl można zarządzać Książkami i Kategoriami do książek, adresy to:
+
+Dla książek:
+http://localhost/api/books
+
+Przykład usunięcia książki:
+```shell
+curl -X DELETE http://localhost/api/books/9
+```
+Przykład dodania książki:
+```shell
+curl -d '{"title":"New book", "author":"Olsza","short_description":"This is test book","number_available":666,"publication_year":"2023","category_id":3}' -H 'Content-Type: application/json' http://localhost/api/books
+```
+
+
+Dla Kategorii:
+http://localhost/api/categories
+
+Przykład dodania kategorii:
+```shell
+curl -d '{"name":"Test category"}' -H 'Content-Type: application/json' http://localhost/api/categories
+```
+Przykład zmiany nazwy kategorii:
+```shell
+curl -d '{"name":"NEW category"}' -H 'Content-Type: application/json' -X PUT  http://localhost/api/categories/6
+```
+
+## Demo
+
+[Live Demo](https://book-manager.czlowiek.it/)
+
+---
+*Pozdrawiam*
+**Olsza**
