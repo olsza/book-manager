@@ -139,6 +139,10 @@ Przykład zmiany nazwy kategorii:
 curl -d '{"name":"NEW category"}' -H 'Content-Type: application/json' -X PUT  http://localhost/api/categories/6
 ```
 
+## Demo
+
+[Live Demo](https://book-manager.czlowiek.it/)
+
 ---
 *Pozdrawiam*
 **Olsza**
